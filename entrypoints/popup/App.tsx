@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { cleanupEnabled, cleanupTime } from '@/lib/close-ungrouped-tabs';
 import './App.css';
 
 interface Mod {
@@ -21,6 +23,52 @@ const MODS: Mod[] = [
   },
 ];
 
+// Controls for the "close ungrouped tabs" mod, backed by `storage`.
+function CloseUngroupedControls() {
+  const [enabled, setEnabled] = useState(true);
+  const [time, setTime] = useState('06:00');
+
+  useEffect(() => {
+    void cleanupEnabled.getValue().then(setEnabled);
+    void cleanupTime.getValue().then(setTime);
+  }, []);
+
+  return (
+    <li className="mod-config">
+      <span className="mod-name">Close ungrouped tabs</span>
+      <span className="mod-description">
+        Each day at the set time, closes every tab that isn&apos;t in a tab
+        group (pinned tabs are spared). A window with only loose tabs closes
+        entirely.
+      </span>
+      <div className="mod-controls">
+        <label>
+          <input
+            type="checkbox"
+            checked={enabled}
+            onChange={(e) => {
+              setEnabled(e.target.checked);
+              void cleanupEnabled.setValue(e.target.checked);
+            }}
+          />
+          Enabled
+        </label>
+        <label>
+          Time
+          <input
+            type="time"
+            value={time}
+            onChange={(e) => {
+              setTime(e.target.value);
+              void cleanupTime.setValue(e.target.value);
+            }}
+          />
+        </label>
+      </div>
+    </li>
+  );
+}
+
 function App() {
   return (
     <main className="popup">
@@ -33,6 +81,7 @@ function App() {
             <span className="mod-description">{mod.description}</span>
           </li>
         ))}
+        <CloseUngroupedControls />
       </ul>
     </main>
   );

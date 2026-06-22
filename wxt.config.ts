@@ -6,7 +6,14 @@ export default defineConfig({
   manifest: {
     name: "Aron's Web Mods",
     description: 'A personal collection of browser tweaks and mods.',
-    permissions: ['storage', 'activeTab', 'scripting', 'clipboardWrite'],
+    permissions: [
+      'storage',
+      'activeTab',
+      'scripting',
+      'clipboardWrite',
+      'tabs',
+      'alarms',
+    ],
     commands: {
       'copy-url': {
         suggested_key: {
