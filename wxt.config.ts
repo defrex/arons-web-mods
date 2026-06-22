@@ -6,6 +6,15 @@ export default defineConfig({
   manifest: {
     name: "Aron's Web Mods",
     description: 'A personal collection of browser tweaks and mods.',
-    permissions: ['storage'],
+    permissions: ['storage', 'activeTab', 'scripting', 'clipboardWrite'],
+    commands: {
+      'copy-url': {
+        suggested_key: {
+          default: 'Ctrl+Shift+D',
+          mac: 'Command+Shift+D',
+        },
+        description: 'Copy current page URL to clipboard',
+      },
+    },
   },
 });

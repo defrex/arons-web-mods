@@ -10,6 +10,11 @@ interface Mod {
 // grows, this is the place to surface per-mod toggles backed by `storage`.
 const MODS: Mod[] = [
   {
+    id: 'copy-url',
+    name: 'Copy URL (⌘⇧D)',
+    description: 'Copy the current page URL to the clipboard.',
+  },
+  {
     id: 'example',
     name: 'Example (example.com)',
     description: 'Rewrites the page heading — a template for new mods.',

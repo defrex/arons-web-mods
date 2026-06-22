@@ -4,6 +4,15 @@ A personal collection of browser tweaks and mods — small content scripts that
 make various sites behave the way I prefer. Built with
 [WXT](https://wxt.dev), TypeScript, React, ESLint, Prettier, and Vitest.
 
+## Included mods
+
+- **Copy URL** — press <kbd>Cmd+Shift+D</kbd> (<kbd>Ctrl+Shift+D</kbd> on
+  Windows/Linux) to copy the current page's URL to the clipboard, with a small
+  toast confirmation. Works on normal web pages; not on `chrome://` pages, the
+  Chrome Web Store, or the new-tab page. This combo is Chrome's default
+  "bookmark all tabs" shortcut; if it doesn't register, assign it (or any free
+  combo) to **Copy current page URL** at `chrome://extensions/shortcuts`.
+
 ## Why WXT?
 
 [WXT](https://wxt.dev) is a modern, actively-maintained web-extension framework
